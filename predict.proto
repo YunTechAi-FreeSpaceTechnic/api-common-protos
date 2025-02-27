@@ -29,5 +29,5 @@ message SingleModel {
 
 service PredictBridge {
   rpc PredictAll(UserMessages) returns (ModelResponse);
-  rpc Predict(SingleModel) returns (ModelResponse);
+  rpc Predict(SingleModel) returns (ModelPredict);
 }
