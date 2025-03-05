@@ -3,7 +3,7 @@ syntax = "proto3";
 
 package predict;
 
-message ModelInfoRequest {
+message Empty {
 }
 
 message ModelInfo {
@@ -11,10 +11,15 @@ message ModelInfo {
   string version = 2;
 }
 
+message Labels {
+  repeated string title = 1;
+}
+
 message AllModel {
   repeated ModelInfo models = 1;
 }
 
 service Info {
-  rpc All(ModelInfoRequest) returns (AllModel);
+  rpc All(Empty) returns (AllModel);
+  rpc Labels(Empty) return (Labels);
 }
