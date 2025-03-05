@@ -21,5 +21,5 @@ message AllModel {
 
 service Info {
   rpc All(Empty) returns (AllModel);
-  rpc Labels(Empty) return (Labels);
+  rpc Labels(Empty) returns (Labels);
 }
