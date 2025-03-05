@@ -11,8 +11,13 @@ message ModelInfo {
   string version = 2;
 }
 
+message Label {
+  string question = 1;
+  string answer = 2;
+}
+
 message Labels {
-  repeated string title = 1;
+  repeated Label labels = 1;
 }
 
 message AllModel {
