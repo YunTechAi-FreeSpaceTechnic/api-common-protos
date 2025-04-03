@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package data_manager;
+
+import "common.proto";
+import "models_server.proto";
+
+message Label {
+  optional string question = 1;
+  string answer = 2;
+}
+
+message Labels {
+  repeated Label labels = 1;
+}
+
+message FromInfo {
+  string id = 1;
+  string name = 2;
+}
+
+message SaveMessageRequest {
+  common.Text text = 1;
+  optional FromInfo from = 2;
+}
+
+message SaveModelReplyRequest {
+  common.Entity message_entity = 1;
+  repeated float predict = 2;
+  models_server.ModelInfo model_info = 3;
+}
+
+message SaveRecoommendRequest {
+  common.Entity message_entity = 1;
+  string text = 2;
+}
+
+service DataManagerService {
+  rpc GetAllLabels(common.Empty) returns (Labels);
+
+  rpc AddLabel(Label) returns (common.Ok);
+
+  rpc SaveMessage(SaveMessageRequest) returns (common.Entity);
+
+  rpc SaveModelReply(SaveModelReplyRequest) returns (common.Entity);
+
+  rpc SaveRecommend(SaveRecoommendRequest) returns (common.Entity);
+}
