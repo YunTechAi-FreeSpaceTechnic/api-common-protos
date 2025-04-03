@@ -10,9 +10,11 @@ enum ModelType {
   MODEL_TYPE_PREDICT = 2;
 }
 
-message DockerImage {
+message DockerContainer {
   string name = 1;
   string tag = 2;
+  string env_file_path = 3;
+  bool usage_other_service = 4;
 }
 
 message ModelInfo {
@@ -38,7 +40,7 @@ message SetModelServerStatusRequest {
 }
 
 service ModelsManagerService {
-  rpc AddModelServer(DockerImage) returns (common.Ok);
+  rpc AddModelServer(DockerContainer) returns (common.Ok);
 
   rpc GetAllModels(common.Empty) returns (AllModles);
 
