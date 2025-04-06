@@ -2,9 +2,8 @@ syntax = "proto3";
 
 package rpc.data_manager;
 
-import "common.proto";
 import "google/protobuf/empty.proto";
-import "models_server.proto";
+import "rpc/common.proto";
 
 message Label {
   optional string question = 1;
@@ -28,7 +27,7 @@ message SaveMessageRequest {
 message SaveModelReplyRequest {
   common.Entity message_entity = 1;
   repeated float predict = 2;
-  models_server.ModelInfo model_info = 3;
+  rpc.common.ModelInfo model_info = 3;
 }
 
 message SaveRecoommendRequest {

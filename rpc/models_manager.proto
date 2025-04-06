@@ -2,14 +2,8 @@ syntax = "proto3";
 
 package rpc.models_manager;
 
-import "common.proto";
 import "google/protobuf/empty.proto";
-
-enum ModelType {
-  MODEL_TYPE_UNSPECIFIED = 0;
-  MODEL_TYPE_ENSEMBLE = 1;
-  MODEL_TYPE_PREDICT = 2;
-}
+import "rpc/common.proto";
 
 message DockerContainer {
   string name = 1;
@@ -18,25 +12,17 @@ message DockerContainer {
   bool usage_other_service = 4;
 }
 
-message ModelInfo {
-  string name = 1;
-  string creator_name = 2;
-  string version = 3;
-  ModelType model_type = 4;
-  bool online = 5;
-}
-
 message AttackModelRequest {
-  ModelInfo specify = 1;
-  common.Message message = 2;
+  rpc.common.ModelInfo specify = 1;
+  rpc.common.Message message = 2;
 }
 
 message AllModles {
-  repeated ModelInfo modles = 1;
+  repeated rpc.common.ModelInfo modles = 1;
 }
 
 message SetModelServerStatusRequest {
-  ModelInfo info = 1;
+  rpc.common.ModelInfo info = 1;
   bool online = 2;
 }
 

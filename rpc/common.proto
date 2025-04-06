@@ -14,3 +14,17 @@ message Text {
 message Message {
   repeated Text parts = 2;
 }
+
+message ModelInfo {
+  string name = 1;
+  string creator_name = 2;
+  string version = 3;
+  ModelType model_type = 4;
+  bool online = 5;
+}
+
+enum ModelType {
+  MODEL_TYPE_UNSPECIFIED = 0;
+  MODEL_TYPE_ENSEMBLE = 1;
+  MODEL_TYPE_PREDICT = 2;
+}
