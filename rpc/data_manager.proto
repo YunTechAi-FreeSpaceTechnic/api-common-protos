@@ -1,8 +1,9 @@
 syntax = "proto3";
 
-package data_manager;
+package rpc.data_manager;
 
 import "common.proto";
+import "google/protobuf/empty.proto";
 import "models_server.proto";
 
 message Label {
@@ -36,13 +37,13 @@ message SaveRecoommendRequest {
 }
 
 service DataManagerService {
-  rpc GetAllLabels(common.Empty) returns (Labels);
+  rpc GetAllLabels(google.protobuf.Empty) returns (Labels);
 
-  rpc AddLabel(Label) returns (common.Ok);
+  rpc AddLabel(Label) returns (google.protobuf.Empty);
 
-  rpc SaveMessage(SaveMessageRequest) returns (common.Entity);
+  rpc SaveMessage(SaveMessageRequest) returns (google.protobuf.Empty);
 
-  rpc SaveModelReply(SaveModelReplyRequest) returns (common.Entity);
+  rpc SaveModelReply(SaveModelReplyRequest) returns (google.protobuf.Empty);
 
-  rpc SaveRecommend(SaveRecoommendRequest) returns (common.Entity);
+  rpc SaveRecommend(SaveRecoommendRequest) returns (google.protobuf.Empty);
 }

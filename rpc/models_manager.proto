@@ -1,8 +1,9 @@
 syntax = "proto3";
 
-package models_manager;
+package rpc.models_manager;
 
 import "common.proto";
+import "google/protobuf/empty.proto";
 
 enum ModelType {
   MODEL_TYPE_UNSPECIFIED = 0;
@@ -40,11 +41,11 @@ message SetModelServerStatusRequest {
 }
 
 service ModelsManagerService {
-  rpc AddModelServer(DockerContainer) returns (common.Ok);
+  rpc AddModelServer(DockerContainer) returns (google.protobuf.Empty);
 
-  rpc GetAllModels(common.Empty) returns (AllModles);
+  rpc GetAllModels(google.protobuf.Empty) returns (AllModles);
 
-  rpc SetModelServerStatus(SetModelServerStatusRequest) returns (common.Ok);
+  rpc SetModelServerStatus(SetModelServerStatusRequest) returns (google.protobuf.Empty);
 
-  rpc AttackModel(AttackModelRequest) returns (common.Ok);
+  rpc AttackModel(AttackModelRequest) returns (google.protobuf.Empty);
 }
