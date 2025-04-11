@@ -38,11 +38,11 @@ message SaveRecoommendRequest {
 service DataManagerService {
   rpc GetAllLabels(google.protobuf.Empty) returns (Labels);
 
-  rpc AddLabel(Label) returns (google.protobuf.Empty);
+  rpc AddLabel(Label) returns (rpc.common.Entity);
 
-  rpc SaveMessage(SaveMessageRequest) returns (google.protobuf.Empty);
+  rpc SaveMessage(SaveMessageRequest) returns (rpc.common.Entity);
 
-  rpc SaveModelReply(SaveModelReplyRequest) returns (google.protobuf.Empty);
+  rpc SaveModelReply(SaveModelReplyRequest) returns (rpc.common.Entity);
 
   rpc SaveRecommend(SaveRecoommendRequest) returns (google.protobuf.Empty);
 }
