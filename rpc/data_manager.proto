@@ -21,7 +21,7 @@ message FromInfo {
 
 message SaveMessageRequest {
   common.Text text = 1;
-  optional FromInfo from = 2;
+  optional FromInfo from_info = 2;
 }
 
 message SaveModelReplyRequest {
