@@ -6,6 +6,7 @@ import "google/protobuf/timestamp.proto";
 
 message Entity {
   uint32 id = 1;
+  EntityType entity_type = 2;
 }
 
 message Text {
@@ -30,4 +31,9 @@ enum ModelType {
   MODEL_TYPE_UNSPECIFIED = 0;
   MODEL_TYPE_ENSEMBLE = 1;
   MODEL_TYPE_PREDICT = 2;
+}
+
+enum EntityType {
+  ENTITY_TYPE_UNSPECIFIED = 0;
+  ENTITY_TYPE_MESSAGE = 1;
 }

@@ -14,12 +14,18 @@ message Labels {
   repeated Label labels = 1;
 }
 
+enum FromType {
+  FROM_TYPE_UNSPECIFIED = 0;
+  FROM_TYPE_LINE = 1;
+  FROM_TYPE_DASHBOARD = 2;
+}
+
 message FromInfo {
   // chat id
   string id = 1;
-  // from name
+  // from type
   // example: line or fb or dashboard
-  string name = 2;
+  FromType from_type = 2;
 }
 
 message SaveMessageRequest {
