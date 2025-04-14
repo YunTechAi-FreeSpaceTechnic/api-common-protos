@@ -40,6 +40,11 @@ message SetModelServerStatusRequest {
   bool online = 2;
 }
 
+message AttackModelResponse {
+  repeated float result = 1;
+  rpc.common.ModelType response_type = 2;
+}
+
 service ModelsManagerService {
   // Model manager
   rpc AddModelServer(DockerContainer) returns (google.protobuf.Empty);
@@ -53,5 +58,5 @@ service ModelsManagerService {
 
   rpc GetModelInfo(rpc.common.Entity) returns (rpc.common.ModelInfo);
 
-  rpc AttackModel(AttackModelRequest) returns (google.protobuf.Empty);
+  rpc AttackModel(AttackModelRequest) returns (AttackModelResponse);
 }
