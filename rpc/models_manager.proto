@@ -31,7 +31,7 @@ message AllModels {
   repeated Model models = 1;
 }
 
-message AllModlesInfo {
+message AllModelsInfo {
   repeated rpc.common.ModelInfo models = 1;
 }
 
@@ -54,7 +54,7 @@ service ModelsManagerService {
   rpc SetModelServerStatus(SetModelServerStatusRequest) returns (google.protobuf.Empty);
 
   // Model info
-  rpc GetAllModelsInfo(google.protobuf.Empty) returns (AllModlesInfo);
+  rpc GetAllModelsInfo(google.protobuf.Empty) returns (AllModelsInfo);
 
   rpc GetModelInfo(rpc.common.Entity) returns (rpc.common.ModelInfo);
 
