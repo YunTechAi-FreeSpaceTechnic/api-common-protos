@@ -28,11 +28,11 @@ message Model {
 }
 
 message AllModels {
-  repeated rpc.common.ModelInfo modles = 1;
+  repeated Model models = 1;
 }
 
 message AllModlesInfo {
-  repeated rpc.common.ModelInfo modles = 1;
+  repeated rpc.common.ModelInfo models = 1;
 }
 
 message SetModelServerStatusRequest {
