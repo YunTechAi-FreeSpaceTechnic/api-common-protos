@@ -17,7 +17,21 @@ message AttackModelRequest {
   rpc.common.Message message = 2;
 }
 
-message AllModles {
+message Model {
+  string host = 1;
+  int32 port = 2;
+  rpc.common.Entity entity = 3;
+
+  bool disable = 4;
+  optional string docker_image = 5;
+  optional string env_file_path = 6;
+}
+
+message AllModels {
+  repeated rpc.common.ModelInfo modles = 1;
+}
+
+message AllModlesInfo {
   repeated rpc.common.ModelInfo modles = 1;
 }
 
@@ -27,11 +41,17 @@ message SetModelServerStatusRequest {
 }
 
 service ModelsManagerService {
+  // Model manager
   rpc AddModelServer(DockerContainer) returns (google.protobuf.Empty);
 
-  rpc GetAllModels(google.protobuf.Empty) returns (AllModles);
+  rpc GetAllModels(google.protobuf.Empty) returns (AllModels);
 
   rpc SetModelServerStatus(SetModelServerStatusRequest) returns (google.protobuf.Empty);
+
+  // Model info
+  rpc GetAllModelsInfo(google.protobuf.Empty) returns (AllModlesInfo);
+
+  rpc GetModelInfo(rpc.common.Entity) returns (rpc.common.ModelInfo);
 
   rpc AttackModel(AttackModelRequest) returns (google.protobuf.Empty);
 }

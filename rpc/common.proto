@@ -24,7 +24,6 @@ message ModelInfo {
   string creator_name = 2;
   string version = 3;
   ModelType model_type = 4;
-  bool online = 5;
 }
 
 enum ModelType {
