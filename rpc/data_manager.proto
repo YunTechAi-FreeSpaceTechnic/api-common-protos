@@ -5,15 +5,6 @@ package rpc.data_manager;
 import "google/protobuf/empty.proto";
 import "rpc/common.proto";
 
-message Label {
-  optional string question = 1;
-  string answer = 2;
-}
-
-message Labels {
-  repeated Label labels = 1;
-}
-
 enum FromType {
   FROM_TYPE_UNSPECIFIED = 0;
   FROM_TYPE_LINE = 1;
@@ -45,10 +36,6 @@ message SaveRecoommendRequest {
 }
 
 service DataManagerService {
-  rpc GetAllLabels(google.protobuf.Empty) returns (Labels);
-
-  rpc AddLabel(Label) returns (rpc.common.Entity);
-
   rpc SaveMessage(SaveMessageRequest) returns (rpc.common.Entity);
 
   rpc SaveModelReply(SaveModelReplyRequest) returns (rpc.common.Entity);

@@ -24,12 +24,14 @@ message ModelInfo {
   string creator_name = 2;
   string version = 3;
   ModelType model_type = 4;
+  optional uint32 class_id = 5;
 }
 
 enum ModelType {
   MODEL_TYPE_UNSPECIFIED = 0;
   MODEL_TYPE_ENSEMBLE = 1;
   MODEL_TYPE_PREDICT = 2;
+  MODEL_TYPE_CLASS_PREDICT = 3;
 }
 
 enum EntityType {

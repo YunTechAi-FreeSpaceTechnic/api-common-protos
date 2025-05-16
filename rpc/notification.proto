@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package rpc.notification;
+
+import "google/protobuf/empty.proto";
+import "rpc/common.proto";
+
+service NotificationService {
+  rpc NotifyEvent(google.protobuf.Empty) returns (stream common.Message);
+
+  rpc Notify(common.Message) returns (google.protobuf.Empty);
+}

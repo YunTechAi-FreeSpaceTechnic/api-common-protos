@@ -13,8 +13,8 @@ message DockerContainer {
 }
 
 message AttackModelRequest {
-  rpc.common.ModelInfo specify = 1;
-  rpc.common.Message message = 2;
+  repeated rpc.common.ModelInfo specify = 1;
+  string chat_id = 2;
 }
 
 message Model {
@@ -45,18 +45,29 @@ message AttackModelResponse {
   rpc.common.ModelType response_type = 2;
 }
 
+message Label {
+  optional string question = 1;
+  string answer = 2;
+}
+
+message Labels {
+  repeated Label labels = 1;
+}
+
 service ModelsManagerService {
   // Model manager
   rpc AddModelServer(DockerContainer) returns (google.protobuf.Empty);
 
+  // Database Model data
   rpc GetAllModels(google.protobuf.Empty) returns (AllModels);
 
-  rpc SetModelServerStatus(SetModelServerStatusRequest) returns (google.protobuf.Empty);
+  rpc GetModelInfo(rpc.common.Entity) returns (rpc.common.ModelInfo);
 
+  rpc SetModelServerStatus(SetModelServerStatusRequest) returns (google.protobuf.Empty);
   // Model info
   rpc GetAllModelsInfo(google.protobuf.Empty) returns (AllModelsInfo);
 
-  rpc GetModelInfo(rpc.common.Entity) returns (rpc.common.ModelInfo);
+  rpc GetAllLabels(google.protobuf.Empty) returns (Labels);
 
   rpc AttackModel(AttackModelRequest) returns (AttackModelResponse);
 }
